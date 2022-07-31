@@ -62,7 +62,6 @@ public class PostsIndexController {
         PostsDto.Response dto = postsService.findById(id);
         List<CommentDto.Response> comments = dto.getComments();
 
-
         /* 댓글 관련 */
         if (comments != null && !comments.isEmpty()) {
             model.addAttribute("comments", comments);
@@ -104,8 +103,7 @@ public class PostsIndexController {
     }
 
     @GetMapping("/posts/search")
-    public String search(String keyword, Model model, @PageableDefault(sort = "id", direction = Sort.Direction.DESC)
-            Pageable pageable, @LoginUser UserDto.Response user) {
+    public String search(String keyword, Model model, @PageableDefault(sort = "id", direction = Sort.Direction.DESC) Pageable pageable, @LoginUser UserDto.Response user) {
         Page<Posts> searchList = postsService.search(keyword, pageable);
 
         if (user != null) {
