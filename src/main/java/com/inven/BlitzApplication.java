@@ -8,15 +8,15 @@ import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 
 @SpringBootApplication
 @EnableJpaAuditing
-public class InvenApplication extends SpringBootServletInitializer {
+public class BlitzApplication extends SpringBootServletInitializer {
 
     @Override
     protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
-        return application.sources(InvenApplication.class);
+        return application.sources(BlitzApplication.class);
     }
 
     public static void main(String[] args) {
-        SpringApplication.run(InvenApplication.class, args);
+        SpringApplication.run(BlitzApplication.class, args);
     }
 
 }
