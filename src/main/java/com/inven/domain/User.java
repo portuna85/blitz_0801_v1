@@ -1,11 +1,14 @@
 package com.inven.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -34,6 +37,11 @@ public class User extends BaseTimeEntity {
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private Role role;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "posts")
+    private List<Posts> posts = new ArrayList<>();
+
 
     /* 회원정보 수정 */
     public void modify(String nickname, String password) {
