@@ -1,14 +1,11 @@
 package com.inven.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -44,7 +41,7 @@ public class User extends BaseTimeEntity {
         this.password = password;
     }
 
-    /* 소셜로그인시 이미 등록된 회원이라면 수정날짜만 업데이트해줘서
+    /** 소셜로그인시 이미 등록된 회원이라면 수정날짜만 업데이트해줘서
      * 기존 데이터를 보존하도록 예외처리 */
     public User updateModifiedDate() {
         this.onPreUpdate();
