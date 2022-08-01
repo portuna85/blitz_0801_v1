@@ -20,7 +20,6 @@ import java.util.Collections;
 /**
  * Security UserDetailsService == OAuth OAuth2UserService
  * */
-@Slf4j
 @RequiredArgsConstructor
 @Service
 public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequest, OAuth2User> {
@@ -36,19 +35,12 @@ public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequ
         /* OAuth2 서비스 id 구분코드 ( 구글, 카카오, 네이버 ) */
         String registrationId = userRequest.getClientRegistration().getRegistrationId();
 
-        log.info("registrationId : " + registrationId);
-
         /* OAuth2 로그인 진행시 키가 되는 필드 값 (PK) (구글의 기본 코드는 "sub") */
         String userNameAttributeName = userRequest.getClientRegistration().getProviderDetails()
                 .getUserInfoEndpoint().getUserNameAttributeName();
 
-        log.info("============================================");
-        log.info("userNameAttributeName : " + userNameAttributeName);
-
         /* OAuth2UserService */
         OAuthAttributes attributes = OAuthAttributes.of(registrationId, userNameAttributeName, oAuth2User.getAttributes());
-        log.info("=============================================");
-        log.info("getAttributes(): " + attributes.getAttributes());
 
         User user = saveOrUpdate(attributes);
 

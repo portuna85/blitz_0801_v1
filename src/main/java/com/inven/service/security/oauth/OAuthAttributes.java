@@ -2,20 +2,14 @@ package com.inven.service.security.oauth;
 
 import com.inven.domain.Role;
 import com.inven.domain.User;
-import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 
 import java.util.Map;
 
 /**
  * OAuth DTO Class
  */
-@Slf4j
-@AllArgsConstructor
-@NoArgsConstructor
 @Builder
 @Getter
 public class OAuthAttributes {
@@ -49,8 +43,6 @@ public class OAuthAttributes {
     private static OAuthAttributes ofNaver(String userNameAttributeName, Map<String, Object> attributes) {
         /* JSON형태이기 때문에 Map을 통해 데이터를 가져온다. */
         Map<String, Object> response = (Map<String, Object>) attributes.get("response");
-
-        log.info("naver response : " + response);
 
         return OAuthAttributes.builder()
                 .username((String) response.get("email"))

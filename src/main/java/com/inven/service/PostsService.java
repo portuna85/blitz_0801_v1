@@ -12,7 +12,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-@Slf4j
 @RequiredArgsConstructor
 @Service
 public class PostsService {
@@ -26,7 +25,6 @@ public class PostsService {
         /* User 정보를 가져와 dto에 담아준다. */
         User user = userRepository.findByNickname(nickname);
         dto.setUser(user);
-        log.info("PostsService save() 실행");
         Posts posts = dto.toEntity();
         postsRepository.save(posts);
 
